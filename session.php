@@ -1,5 +1,5 @@
 <?php
-
+namespace Task3;
 class Session
 {
     // private string $name;
@@ -84,40 +84,22 @@ class Session
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = $_POST;
-    // var_dump($data);
-
-    Session::start();
-
-    if (!empty($data['username']) && !empty($data['password'])) {
-        $username = trim($data['username']);
-        $pass = trim($data['password']);
-        Session::setSession('user', [
-            'username' => $username,
-            'password' => $pass
-        ]);
-    }
-    if (Session::has('user')) {
-        Session::setSession("success", "User Added Successfully");
-    } else {
-        Session::setSession("error", "Fail to add User");
-    }
-}
 
 
-if (Session::has('success')) {
-    echo Session::flash('success');
-    echo "</br>";
-}
-if (Session::has('error')) {
-    echo Session::flash('error');
-    echo "</br>";
-}
-if (Session::has('user')) {
-    $user = Session::getSession('user');
-    echo "Welcome " . htmlspecialchars($user['username']);
-    echo "</br>";
-    // بعرض الباسورد بجرب بس عارف انه غلط 😅
-    echo "Your Password is : " . htmlspecialchars($user['password']);
-}
+// test view
+
+// if (Session::has('success')) {
+//     echo Session::flash('success');
+//     echo "</br>";
+// }
+// if (Session::has('error')) {
+//     echo Session::flash('error');
+//     echo "</br>";
+// }
+// if (Session::has('user')) {
+//     $user = Session::getSession('user');
+//     echo "Welcome " . htmlspecialchars($user['username']);
+//     echo "</br>";
+//     // بعرض الباسورد بجرب بس عارف انه غلط 😅
+//     echo "Your Password is : " . htmlspecialchars($user['password']);
+// }
